@@ -46,7 +46,15 @@ try:
 
     # Filtrar datos del alumno seleccionado
     datos_alumno = df_notas[df_notas["Estudiante"] == estudiante_seleccionado].iloc[0]
-    datos_asist_alumno = df_asist[df_asist["Estudiante"] == estudiante_seleccionado].iloc[0]
+   # Filtra los datos del estudiante
+filtro_estudiante = df_asist[df_asist["Estudiante"] == estudiante_seleccionado]
+
+# Verifica si el filtro encontró algo antes de intentar extraer el índice
+if not filtro_estudiante.empty:
+    datos_asist_alumno = filtro_estudiante.iloc[0]
+else:
+    st.warning("No se encontraron datos para el estudiante seleccionado.")
+    datos_asist_alumno = None # O maneja el caso vacío según tu diseño
 
     # Mostrar información resumida del estudiante en columnas
     c1, c2, c3 = st.columns(3)
