@@ -287,7 +287,4 @@ def generar_dashboard_academico(input_filename, output_filename):
     print(f"¡Éxito! Archivo generado correctamente en: {output_filename}")
 
 if __name__ == "__main__":
-    # Define tus rutas aquí al ejecutar en tu entorno local o de CI/CD
-    if __name__ == "__main__":
-    # Asegúrate de dar 4 espacios (o una tecla TAB) al inicio de la siguiente línea:
     generar_dashboard_academico("Control_Calificaciones_Asistencia_Didactica.xlsx", "Control_Calificaciones_GitHub.xlsx")
