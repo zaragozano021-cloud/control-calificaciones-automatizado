@@ -2,33 +2,34 @@ name: Ejecutar Automatizacion Academica
 
 on:
   push:
-    branches: [ "main" ] # Se ejecuta automáticamente cuando subes cambios
-  workflow_dispatch:     # Permite ejecutarlo manualmente con un botón
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
-    - name: Descargar el Repositorio
-      uses: actions/checkout@v3
+      - name: Descargar el Repositorio
+        uses: actions/checkout@v4
 
-    - name: Configurar Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Instalar Dependencias
-      run: |
-        python -m pip install --upgrade pip
-        pip install openpyxl
+      - name: Instalar Dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Ejecutar Script de Procesamiento
-      run: python update_dashboard.py
+      - name: Ejecutar Script de Procesamiento
+        run: python update_dashboard.py
 
-    - name: Guardar Cambios en el Excel
-      run: |
-        git config --global user.name 'GitHub Actions Bot'
-        git config --global user.email 'actions@github.com'
-        git add Control_Calificaciones_GitHub.xlsx
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Autogestionado: Dashboard y asistencia actualizados" && git push)
+      - name: Guardar Cambios en el Excel
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add Control_Calificaciones_GitHub.xlsx
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Autogestionado: Dashboard y asistencia actualizados" && git push)
