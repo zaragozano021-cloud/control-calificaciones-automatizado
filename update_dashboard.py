@@ -288,4 +288,6 @@ def generar_dashboard_academico(input_filename, output_filename):
 
 if __name__ == "__main__":
     # Define tus rutas aquí al ejecutar en tu entorno local o de CI/CD
-    generar_dashboard_academico("Control_Calificaciones_Analis_RAPs_2.xlsx", "Control_Calificaciones_GitHub.xlsx")
+    if __name__ == "__main__":
+    # Cambia el primer nombre por el de tu archivo real en GitHub
+    generar_dashboard_academico("TU_NOMBRE_REAL_AQUI.xlsx", "Control_Calificaciones_GitHub.xlsx")
